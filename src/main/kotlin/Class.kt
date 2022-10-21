@@ -89,7 +89,4 @@ fun main(args: Array<String>) {
     println(car4)
     val car5 = car.copy(year = 2016, color = "Yellow")
     println(car5)
-
-
-
 }
