@@ -1,3 +1,17 @@
+//Not necessary that the filename should match class name.
+//You can have more than one class in a file.
+//By default the class access is public.
+//You can use private with classes. Only classes in the same file can use it.
+
+//ACCESS MODIFIERS
+//private -> Same file access
+//protected -> Can't be used
+//public -> Visible to everyone
+//internal - Visible within the same module
+private class MyPrivateClass () {
+
+}
+
 class Emp(val name: String, var age: Int, val address: String = "default address") {
 
     init {
