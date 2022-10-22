@@ -36,8 +36,14 @@ fun main(args: Array<String>) {
     println(upperExtension)
 
 
-
+    //=======
+    //Inline Function
+    //=======
+    val inlineOut  = labelMultiplyInline(2, 3,)
+    println(inlineOut)
 }
+
+inline fun labelMultiplyInline(op1: Int, op2: Int, label: String = "This is the default label") = "$label ${op1 * op2}"
 
 fun labelMultiply(op1: Int, op2: Int, label: String = "This is the default label"): String {
     return "$label ${op1 * op2}"
