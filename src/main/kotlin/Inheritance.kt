@@ -1,4 +1,5 @@
 //Only leave variables open which you want to override in the child class.
+//By default, class is public and final. Hence you need the open keyword
 open class Person(open val name: String, var age: Int) {
 
     init {
@@ -14,6 +15,10 @@ open class Person(open val name: String, var age: Int) {
     fun speak() {
         println("Hi there!")
     }
+
+    open fun sayHi() {
+        println("Hi from parent class")
+    }
 }
 
 //Child class Student inheriting Person.
@@ -21,6 +26,10 @@ open class Person(open val name: String, var age: Int) {
 class Student(override val name: String, val studentId: Long) : Person(name, 40) {
 
     fun isIntelligent() = true
+
+    override fun sayHi() {
+        println("Hi from child class")
+    }
 
 }
 
@@ -32,4 +41,5 @@ fun main(args: Array<String>) {
     val s1 = Student(name = "Joe Student", studentId = 10)
     s1.speak()
     s1.getDisplay()
+    s1.sayHi()
 }
