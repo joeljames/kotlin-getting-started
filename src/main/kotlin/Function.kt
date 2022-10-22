@@ -26,6 +26,17 @@ fun main(args: Array<String>) {
     val trucks = arrayOf(*arrTrucks, *moreTrucks, t4)
 
 
+    //=======
+    //Extension Function
+    //=======
+    val upper = upperFirstAndLast("joel")
+    println(upper)
+    val allLowerCase = "joel"
+    val upperExtension = allLowerCase.upperFirstAndLastExtensionFunction()
+    println(upperExtension)
+
+
+
 }
 
 fun labelMultiply(op1: Int, op2: Int, label: String = "This is the default label"): String {
@@ -49,3 +60,17 @@ fun printColors(vararg trucks: Truck) {
         println(t.color)
     }
 }
+
+fun upperFirstAndLast(str: String): String {
+    val upperFirst = str.substring(0, 1).toUpperCase()
+    val upperLast = str.substring(str.length - 1, str.length).toUpperCase()
+    return upperFirst + str.substring(1, str.length - 1) + upperLast
+}
+
+//Extension Function. Extending our built-in String class
+fun String.upperFirstAndLastExtensionFunction(): String {
+    val upperFirst = substring(0, 1).toUpperCase()
+    val upperLast = substring(length - 1, length).toUpperCase()
+    return upperFirst + substring(1, length - 1) + upperLast
+}
+
