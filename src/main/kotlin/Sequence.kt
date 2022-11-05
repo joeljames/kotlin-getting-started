@@ -10,11 +10,12 @@ fun main(args: Array<String>) {
     println("Create infinite sequence....")
     generateSequence(Instant.now()) {it.plusSeconds(1)}
 
-    println("Create sequence from chunks....")
+    println("Create sequence from chunks and limit....")
     //l chunks produce elements one after another. If you have infinite collection generator, put it at the end.
-    val seqFromChinks = sequence {
+    val seqFromChunks = sequence {
         yield(1)
         yieldAll((1..20).toList()) }
+        .take(10)
 
     println("Create sequence from collection....")
     val seqFromCollection = (1..10).asSequence()
