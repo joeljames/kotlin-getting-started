@@ -1,7 +1,6 @@
 import java.time.Year
 
-class Singleton {
-}
+class Singleton
 
 object CompanyCommunications {
     val currentYear = Year.now().value
@@ -11,9 +10,9 @@ object CompanyCommunications {
 }
 
 fun main(args: Array<String>) {
-    //We are calling the two functions here
-    //Using the class name only creates one instance of the object
-    //This is how singleton is done in Kotlin
+    // We are calling the two functions here
+    // Using the class name only creates one instance of the object
+    // This is how singleton is done in Kotlin
     println(CompanyCommunications.getTagLine())
     println(CompanyCommunications.getCopyrightLine())
 }

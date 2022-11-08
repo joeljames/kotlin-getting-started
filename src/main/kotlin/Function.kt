@@ -1,5 +1,5 @@
-//The default return type of a function is Unit
-//fun main(args: Array<String>): Unit {
+// The default return type of a function is Unit
+// fun main(args: Array<String>): Unit {
 
 fun main(args: Array<String>) {
     println(labelMultiply(3, 4, "This is result: "))
@@ -10,14 +10,14 @@ fun main(args: Array<String>) {
     val t1 = Truck("name1", "Yellow", 2021)
     val t2 = Truck("name2", "Blue", 2000)
     val t3 = Truck("name3", "Red", 1998)
-    //=======
-    //vararg
-    //========
+    // =======
+    // vararg
+    // ========
     printColorsWithString(t1, t2, t3, str = "Blah")
 
-    //=======
-    //Spread operator
-    //========
+    // =======
+    // Spread operator
+    // ========
     val arrTrucks = arrayOf(t1, t2, t3)
     printColors(*arrTrucks)
 
@@ -25,21 +25,19 @@ fun main(args: Array<String>) {
     val t4 = Truck("name4", "Pink", 1998)
     val trucks = arrayOf(*arrTrucks, *moreTrucks, t4)
 
-
-    //=======
-    //Extension Function
-    //=======
+    // =======
+    // Extension Function
+    // =======
     val upper = upperFirstAndLast("joel")
     println(upper)
     val allLowerCase = "joel"
     val upperExtension = allLowerCase.upperFirstAndLastExtensionFunction()
     println(upperExtension)
 
-
-    //=======
-    //Inline Function
-    //=======
-    val inlineOut  = labelMultiplyInline(2, 3,)
+    // =======
+    // Inline Function
+    // =======
+    val inlineOut = labelMultiplyInline(2, 3)
     println(inlineOut)
 }
 
@@ -52,8 +50,7 @@ fun labelMultiply(op1: Int, op2: Int, label: String = "This is the default label
 fun labelMultiplyShort(op1: Int, op2: Int, label: String) =
     "$label ${op1 * op2}"
 
-
-data class Truck(val name: String, val color: String, val year: Int) {}
+data class Truck(val name: String, val color: String, val year: Int)
 
 fun printColorsWithString(vararg trucks: Truck, str: String) {
     for (t in trucks) {
@@ -73,10 +70,9 @@ fun upperFirstAndLast(str: String): String {
     return upperFirst + str.substring(1, str.length - 1) + upperLast
 }
 
-//Extension Function. Extending our built-in String class
+// Extension Function. Extending our built-in String class
 fun String.upperFirstAndLastExtensionFunction(): String {
     val upperFirst = substring(0, 1).toUpperCase()
     val upperLast = substring(length - 1, length).toUpperCase()
     return upperFirst + substring(1, length - 1) + upperLast
 }
-

@@ -27,7 +27,6 @@ fun main(args: Array<String>) {
 //        }
 //    println("The future with exception result is ${futureWithException.get()}")
 
-
     println("Completable futures with join: ")
     val future1: CompletableFuture<Int> = CompletableFuture.supplyAsync { someLongRunningTask(1) }
         .thenApply {
@@ -43,7 +42,7 @@ fun main(args: Array<String>) {
 
 fun someLongRunningTask(value: Int): Int {
     TimeUnit.SECONDS.sleep(2)
-    println("The input key value is ${value}")
+    println("The input key value is $value")
     return value * 2
 }
 

@@ -1,9 +1,8 @@
 fun main(args: Array<String>) {
     val mode: Int = 1
-    when(mode) {
+    when (mode) {
         0, 1 -> {
             println("The mode is either 0 or 1")
-
         }
         2 -> {
             println("The mode is 2")

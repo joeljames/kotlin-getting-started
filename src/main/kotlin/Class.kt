@@ -1,41 +1,35 @@
-//Not necessary that the filename should match class name.
-//You can have more than one class in a file.
-//By default the class access is public.
-//You can use private with classes. Only classes in the same file can use it.
+// Not necessary that the filename should match class name.
+// You can have more than one class in a file.
+// By default the class access is public.
+// You can use private with classes. Only classes in the same file can use it.
 
-//ACCESS MODIFIERS
-//private -> Same file access
-//protected -> Can't be used
-//public -> Visible to everyone
-//internal - Visible within the same module
-private class MyPrivateClass() {
+// ACCESS MODIFIERS
+// private -> Same file access
+// protected -> Can't be used
+// public -> Visible to everyone
+// internal - Visible within the same module
+private class MyPrivateClass()
 
-}
+// Protected constructor then you have to include the word constructor
+class EmpProtected protected constructor(val name: String)
 
-//Protected constructor then you have to include the word constructor
-class EmpProtected protected constructor(val name: String) {}
-
-
-//Most of the time you won't need the secondary constructor.
-//You could just pass in default value to the properties.
+// Most of the time you won't need the secondary constructor.
+// You could just pass in default value to the properties.
 class EmpPrimaryAndSecondaryConstructor(val name: String) {
 
     var fullTime: Boolean = true
 
-    //Secondary Constructor
+    // Secondary Constructor
     constructor(name: String, fullTime: Boolean) : this(name) {
         this.fullTime = fullTime
     }
 }
 
-
-class EmpPrivateProperties(private val name: String) {
-
-}
+class EmpPrivateProperties(private val name: String)
 
 class Emp(val name: String, var age: Int, val address: String = "default address") {
 
-    //Not a constructor. Run when the instance is initialized.
+    // Not a constructor. Run when the instance is initialized.
     init {
         println("This is the class initializer")
     }
@@ -49,21 +43,18 @@ class Emp(val name: String, var age: Int, val address: String = "default address
     }
 }
 
-
-//===========
-//Constant
-//===========
-//You don't need a class to define a constant
+// ===========
+// Constant
+// ===========
+// You don't need a class to define a constant
 val MY_CONSTANT = 100
 
-//===========
-//Data Class
-//===========
-//It comes with nice toString function, equals, hashCode, copy
-//data classes cannot be abstract, sealed or inner class
-data class Car(val color: String, val model: String, val year: Int) {
-
-}
+// ===========
+// Data Class
+// ===========
+// It comes with nice toString function, equals, hashCode, copy
+// data classes cannot be abstract, sealed or inner class
+data class Car(val color: String, val model: String, val year: Int)
 
 fun main(args: Array<String>) {
     println(MY_CONSTANT)

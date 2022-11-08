@@ -1,5 +1,5 @@
 fun main(args: Array<String>) {
-    println(SomeClass.accessPrivateVar());
+    println(SomeClass.accessPrivateVar())
 
     val someClass1 = SomeClass.justAssign("Some String")
     val someClass2 = SomeClass.upperOrLowerCase("Some String", true)
@@ -8,8 +8,8 @@ fun main(args: Array<String>) {
     println(someClass3.someString)
 }
 
-//There is no concept of static method in Kotlin.
-//But you can kind of achieve that using companion object.
+// There is no concept of static method in Kotlin.
+// But you can kind of achieve that using companion object.
 class SomeClass private constructor(val someString: String) {
     private val privateVar = 6
 
@@ -18,9 +18,9 @@ class SomeClass private constructor(val someString: String) {
 
         fun accessPrivateVar() = "The private var is: $privateVar"
 
-        //Can be used as a Factory class.
-        //Note you have to make the constructor of SomeClass as private constructor so no one can directly create a
-        //instance of this class
+        // Can be used as a Factory class.
+        // Note you have to make the constructor of SomeClass as private constructor so no one can directly create a
+        // instance of this class
         fun justAssign(str: String) = SomeClass(str)
         fun upperOrLowerCase(str: String, lowerCase: Boolean): SomeClass {
             if (lowerCase) {

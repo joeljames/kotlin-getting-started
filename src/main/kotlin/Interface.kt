@@ -1,5 +1,5 @@
 interface MyInterface {
-    //Interface can have properties
+    // Interface can have properties
     val number: Int
 
     val number2: Int
@@ -8,7 +8,7 @@ interface MyInterface {
     fun myFun(str: String): String
 }
 
-//Extending an interface
+// Extending an interface
 interface MySubInterface : MyInterface {
     fun mySubFun(str: String): String
 }
@@ -25,12 +25,10 @@ class MyClass : MySubInterface {
     }
 }
 
-open class ParentClass(val srr: String) {
+open class ParentClass(val srr: String)
 
-}
-
-//Class can inherit and implement an interface
-class ChildClass(val str: String) : ParentClass(str),  MySubInterface{
+// Class can inherit and implement an interface
+class ChildClass(val str: String) : ParentClass(str), MySubInterface {
     override val number: Int = 25
 
     override fun mySubFun(str: String): String {
@@ -40,5 +38,4 @@ class ChildClass(val str: String) : ParentClass(str),  MySubInterface{
     override fun myFun(str: String): String {
         TODO("Not yet implemented")
     }
-
 }
