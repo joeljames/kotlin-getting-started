@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main(args: Array<String>) { // ktlint-disable filename
     // Array a fix length. Cannot do .add.
     // mix data types in an array. This is a array of Array<Any>
     val mixedArr = arrayOf("apple", "ball", "cat", false, 10, 'C', 20L)

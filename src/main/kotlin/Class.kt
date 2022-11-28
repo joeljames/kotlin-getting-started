@@ -1,6 +1,6 @@
 // Not necessary that the filename should match class name.
 // You can have more than one class in a file.
-// By default the class access is public.
+// By default, the class access is public.
 // You can use private with classes. Only classes in the same file can use it.
 
 // ACCESS MODIFIERS
