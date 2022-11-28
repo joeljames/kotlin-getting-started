@@ -29,3 +29,4 @@ Run the command below to install the configured version of java:
   * Array
   * listOf
   * arrayListOf
+* [CompleteableFuture](src/main/kotlin/CompletableFuture.kt)
