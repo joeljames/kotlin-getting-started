@@ -7,5 +7,4 @@ fun getCurrentDate(): Date {
 fun main(args: Array<String>) {
     val dt: Date = getCurrentDate()
     println("Current date is $dt")
-
 }

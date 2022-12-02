@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main(args: Array<String>) { // ktlint-disable filename
     val multiLine = """This is the first line.
         This is the second.
         This is the third.

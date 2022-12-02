@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main(args: Array<String>) { // ktlint-disable filename
     val mode: Int = 1
     when (mode) {
         0, 1 -> {

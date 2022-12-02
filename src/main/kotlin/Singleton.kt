@@ -1,7 +1,5 @@
 import java.time.Year
 
-class Singleton
-
 object CompanyCommunications {
     val currentYear = Year.now().value
 
