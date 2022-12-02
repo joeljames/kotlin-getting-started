@@ -38,6 +38,15 @@ fun main(args: Array<String>) {
         }
     println("Started the feature, calling the join to get the feature result.")
     CompletableFuture.allOf(future1, future2).join()
+
+    println("Completable futures the combine: ")
+    // if we want to execute two independent Futures and do something with their results.
+    // We can use the thenCombine.
+    val featureWithCombine = CompletableFuture.supplyAsync { someLongRunningTask(4) }
+        .thenCombine(CompletableFuture.supplyAsync { someLongRunningTask(5) }) { t1, t2 ->
+            t1 + t2
+        }
+    println("Getting the result of feature with thenCombine ${featureWithCombine.get()}.")
 }
 
 fun someLongRunningTask(value: Int): Int {
