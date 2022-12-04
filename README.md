@@ -31,3 +31,4 @@ Run the command below to install the configured version of java:
   * arrayListOf
 * [CompleteableFuture](src/main/kotlin/CompletableFuture.kt)
 * [Builder](src/main/kotlin/Builder.kt)
+* [Map](src/main/kotlin/Map.kt)
