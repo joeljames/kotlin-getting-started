@@ -38,3 +38,4 @@ Run the command below to install the configured version of java:
 * [When](src/main/kotlin/When.kt)
 * [StaticMethod](src/main/kotlin/StaticMethod.kt)
 * [Sequence as streams in java](src/main/kotlin/Sequence.kt)
+* [Map Filter OrElse](src/main/kotlin/MapFilterOrElse.kt)

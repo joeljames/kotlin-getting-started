@@ -25,7 +25,13 @@ class EmpPrimaryAndSecondaryConstructor(val name: String) {
     }
 }
 
-class EmpPrivateProperties(private val name: String)
+class EmpPrivateProperties(private val name: String) {
+    private var morePrivate: String? = null
+
+    fun getMorePrivate(): String? {
+        return morePrivate
+    }
+}
 
 class Emp(val name: String, var age: Int, val address: String = "default address") {
 
