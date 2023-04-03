@@ -1,5 +1,6 @@
 fun main(args: Array<String>) { // ktlint-disable filename
-    val mode: Int = 1
+    println("When example...")
+    val mode = 1
     when (mode) {
         0, 1 -> {
             println("The mode is either 0 or 1")
