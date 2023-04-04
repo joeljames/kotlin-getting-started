@@ -41,3 +41,4 @@ Run the command below to install the configured version of java:
 * [Map Filter OrElse](src/main/kotlin/MapFilterOrElse.kt)
 * [Type Conversion](src/main/kotlin/TypeConversion.kt)
 * [Partition](src/main/kotlin/Partition.kt)
+* [Coroutines](src/main/kotlin/Coroutines.kt)
