@@ -44,5 +44,9 @@ fun main(args: Array<String>) { // ktlint-disable filename
     writeMap -= "one"
     println("shorthand remove : $writeMap")
 
-
+//    ==========
+//    List to Map
+//    ==========
+    val numbers = listOf("one", "two", "three", "four")
+    numbers.mapIndexed { index: Int, s: String -> index + 1 to s }.toMap()
 }
