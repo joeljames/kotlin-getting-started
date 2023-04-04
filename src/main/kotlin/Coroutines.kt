@@ -3,6 +3,7 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 fun main() { // ktlint-disable filename
@@ -15,38 +16,39 @@ fun main() { // ktlint-disable filename
 
 //    runBlocking means that the thread that runs it (in this case — the main thread) gets blocked for the duration of the call,
 //    until all the coroutines inside runBlocking complete their execution.
+//    You need this runBlocking to call suspended functions.
     runBlocking { // CoroutineScope
-//        println("Coroutine example ")
-//        launch { // launch a new coroutine and continue (Code inside this block will be ran async)
-//            delay(1000L) // Delay
-//            println("World!")
-//        }
-//        println("Hello ")
-//
-//        println("Coroutine explicit job..")
-//        val job = launch {
-//            delay(1000L)
-//            println("World!")
-//        }
-//        println("Hello")
-//        job.join() // wait until child coroutine completes
-//        println("Done")
+        println("Coroutine example ")
+        launch { // launch a new coroutine and continue (Code inside this block will be ran async)
+            delay(1000L) // Delay
+            println("World!")
+        }
+        println("Hello ")
 
-//        println("Extract into function and call in launch..")
-//        launch { doWorld() }
-//        println("Hello")
+        println("Coroutine explicit job..")
+        val job = launch {
+            delay(1000L)
+            println("World!")
+        }
+        println("Hello")
+        job.join() // wait until child coroutine completes
+        println("Done")
 
-//        println("Concurrent execution..")
-//        // Both pieces of code inside launch blocks execute concurrently
-//        launch {
-//            delay(2000L)
-//            println("World 2")
-//        }
-//        launch {
-//            delay(1000L)
-//            println("World 1")
-//        }
-//        println("Hello")
+        println("Extract into function and call in launch..")
+        launch { doWorld() }
+        println("Hello")
+
+        println("Concurrent execution..")
+        // Both pieces of code inside launch blocks execute concurrently
+        launch {
+            delay(2000L)
+            println("World 2")
+        }
+        launch {
+            delay(1000L)
+            println("World 1")
+        }
+        println("Hello")
 
         println("Span bunch of coroutines to perform computation in parallel..")
         val nums = listOf(1, 2, 3)
