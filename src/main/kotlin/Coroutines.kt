@@ -19,7 +19,7 @@ fun main() { // ktlint-disable filename
 //    You need this runBlocking to call suspended functions.
     runBlocking { // CoroutineScope
         println("Coroutine example ")
-        launch { // launch a new coroutine and continue (Code inside this block will be ran async)
+        launch { // launch a new coroutine and continue (Code inside this block will run asynchronously)
             delay(1000L) // Delay
             println("World!")
         }
@@ -50,7 +50,7 @@ fun main() { // ktlint-disable filename
         }
         println("Hello")
 
-        println("Span bunch of coroutines to perform computation in parallel..")
+        println("Use Flow to span bunch of coroutines to perform computation in parallel..")
         val nums = listOf(1, 2, 3)
         val squaredNums = nums.asFlow().map { num ->
             someTimeIntensiveComputation(num)
@@ -58,14 +58,27 @@ fun main() { // ktlint-disable filename
             .buffer() // kick off all the requests in parallel
             .toList() // join all the async bits
         println("The val is: $squaredNums")
+
+        println("Using flow to make parallel call to make multiple asyn API calls..")
+        val asyncCallOut = (1..3).asFlow().map {
+            callExternalApi(it)
+        }.buffer() // kick off all the requests in parallel
+            .toList() // join all the async bits
+        println("The output of parallel async API calls: $asyncCallOut")
     }
 }
 
 // suspend keyword is required to be used inside coroutines.
-// Thy can inturn use other suspending functions e.g., delay
+// They can in turn use other suspending functions e.g., delay
 suspend fun doWorld() {
     delay(1000L)
     println("World!")
+}
+
+suspend fun callExternalApi(callNumber: Int): String {
+    // Make sure the call to API is also in a suspended block. i.e., the calls should be non-blocking.
+    delay(1000L)
+    return "The call number is $callNumber"
 }
 
 suspend fun someTimeIntensiveComputation(num: Int): Int {
