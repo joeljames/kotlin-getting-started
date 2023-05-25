@@ -39,6 +39,26 @@ fun main(args: Array<String>) {
     // =======
     val inlineOut = labelMultiplyInline(2, 3)
     println(inlineOut)
+
+    // =======
+    // Fold
+    // =======
+    // fold takes an initial value, and the first invocation
+    val l = 1..10
+    val foldSumResult = l.fold(0) { acc, element ->
+        val sum = acc + element
+        sum
+    }
+    println("The foldSumResult: $foldSumResult")
+
+    // =======
+    // Reduce
+    // =======
+    // reduce does not take an initial value
+    val reduceMaxResult = l.reduce { acc, element ->
+        if (element > acc) element else acc
+    }
+    println("The reduceMaxResult: $reduceMaxResult")
 }
 
 inline fun labelMultiplyInline(op1: Int, op2: Int, label: String = "This is the default label") = "$label ${op1 * op2}"
