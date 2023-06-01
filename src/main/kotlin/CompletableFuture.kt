@@ -47,6 +47,16 @@ fun main(args: Array<String>) {
             t1 + t2
         }
     println("Getting the result of feature with thenCombine ${featureWithCombine.get()}.")
+
+    //###############
+    //thenCompose()
+    //###############
+    // Use thenCompose(flatMap) when you have a chain of computation steps.
+    // Use thenApply(map) when you have to work with the result of the previous call. So, this method is useful when we want to transform the result of a CompletableFuture call
+    val composeResultFeature = CompletableFuture.supplyAsync { "Hello" }
+        .thenCompose { CompletableFuture.supplyAsync { "$it World" } }
+        .thenCompose { CompletableFuture.supplyAsync { "$it!" } }
+    println("composeResultFeature: ${composeResultFeature.get()}")
 }
 
 fun someLongRunningTask(value: Int): Int {
