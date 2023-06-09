@@ -42,3 +42,4 @@ Run the command below to install the configured version of java:
 * [Type Conversion](src/main/kotlin/TypeConversion.kt)
 * [Partition](src/main/kotlin/Partition.kt)
 * [Coroutines](src/main/kotlin/Coroutines.kt)
+* [Lambda](src/main/kotlin/Lambda.kt)
