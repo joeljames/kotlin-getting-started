@@ -5,6 +5,7 @@ fun main() { // ktlint-disable filename
     val max = Int.MAX_VALUE
     val range = max.toLong() - min.toLong()
     val partition = 3
+    val sizePerPartition = range / partition
 
     // Returns a sequence of Pair for each bucket.
     val partitionedBucketSequence = (1..3).asSequence().map {
@@ -12,19 +13,19 @@ fun main() { // ktlint-disable filename
             // First bucket
             1 -> {
                 val first = min
-                val second = (min.toLong() + (it * range / partition)).toInt()
+                val second = (min.toLong() + (it * sizePerPartition)).toInt()
                 first to second
             }
             // Last bucket
             partition -> {
-                val first = (min.toLong() + ((partition - 1) * range / partition)).toInt()
+                val first = (min.toLong() + ((partition - 1) * sizePerPartition)).toInt()
                 val second = max
                 first to second
             }
             // Intermediate bucket
             else -> {
-                val first = (min.toLong() + ((it - 1) * range / partition)).toInt()
-                val second = (min.toLong() + (it * range / partition)).toInt()
+                val first = (min.toLong() + ((it - 1) * sizePerPartition)).toInt()
+                val second = (min.toLong() + (it * sizePerPartition)).toInt()
                 first to second
             }
         }
