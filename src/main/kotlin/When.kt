@@ -14,4 +14,11 @@ fun main(args: Array<String>) { // ktlint-disable filename
         !in 20..25 -> println("mode is not between 20 and 25")
         else -> println("I don't know that mode")
     }
+
+    // Using when similar to if else
+    val num = 1
+    val out = when {
+        num %2 == 0 -> "Value is event"
+        else -> "Value is odd"
+    }
 }
