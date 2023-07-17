@@ -1,10 +1,9 @@
-import kotlinx.coroutines.delay // ktlint-disable filename
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import java.util.concurrent.ConcurrentHashMap
 
 fun main() { // ktlint-disable filename
 
@@ -65,7 +64,29 @@ fun main() { // ktlint-disable filename
         }.buffer() // kick off all the requests in parallel
             .toList() // join all the async bits
         println("The output of parallel async API calls: $asyncCallOut")
+
+
+        println("Async - await example")
+        val deferredProcessMap = ConcurrentHashMap<Int, Deferred<Any>>()
+        // Deferred is analog of Future in Java. Encapsulates an operation that will be completed sometime in the future.
+        val deferred = deferredProcessMap.computeIfAbsent(1) {
+            // The callback in the async block will be performed asynchronously.
+            async {
+                withContext(Dispatchers.IO) {
+                    cb()
+                }
+            }
+        }
+        println("after deferred line")
+        // await the callback. Wait for the Future/Deferred to be completed.
+        deferred.await()
+        println("after deferred await")
+
     }
+}
+
+fun cb() {
+    println("In the cb function ")
 }
 
 // suspend keyword is required to be used inside coroutines.
