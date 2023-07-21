@@ -59,6 +59,13 @@ fun main(args: Array<String>) {
         if (element > acc) element else acc
     }
     println("The reduceMaxResult: $reduceMaxResult")
+
+    val reduceWithOneElement = listOf(1).reduce { acc, element ->
+        // This block only gets executed if there are more than one element in the list
+        val accumulator = acc + element
+        accumulator
+    }
+    println("The reduceWithOneElement: $reduceWithOneElement")
 }
 
 inline fun labelMultiplyInline(op1: Int, op2: Int, label: String = "This is the default label") = "$label ${op1 * op2}"
