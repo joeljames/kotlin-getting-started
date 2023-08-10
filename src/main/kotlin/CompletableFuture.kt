@@ -1,3 +1,6 @@
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
 
@@ -57,6 +60,43 @@ fun main(args: Array<String>) {
         .thenCompose { CompletableFuture.supplyAsync { "$it World" } }
         .thenCompose { CompletableFuture.supplyAsync { "$it!" } }
     println("composeResultFeature: ${composeResultFeature.get()}")
+
+
+    //###############
+    //AsyncCallHandler.toCompletableFuture will convert a Retrofit Call<T> to a CompleteableFuture<T> directly,
+    // without allocating a thread and blocking it.
+    //###############
+    val asyncHandler  = AsyncCallHandler()
+    //Pass in a retrofit API call below call.
+    //This will return a future which you can then do future.thenApply etc.
+//    asyncHandler.toCompletableFuture()
+
+
+}
+
+class AsyncCallHandler {
+    fun <T> toCompletableFuture(call: Call<T>): CompletableFuture<T?> {
+        val ret = CompletableFuture<T?>()
+
+        call.enqueue(object : Callback<T> {
+            // This occurs when there is a network error
+            override fun onFailure(call: Call<T>, throwable: Throwable) {
+                ret.completeExceptionally(throwable)
+            }
+
+            override fun onResponse(call: Call<T>, response: Response<T>) {
+                if (response.isSuccessful) {
+                    response.body()?.let { result ->
+                        ret.complete(result)
+                    }
+                } else {
+                    ret.complete(null)
+                }
+            }
+        })
+
+        return ret
+    }
 }
 
 fun someLongRunningTask(value: Int): Int {
