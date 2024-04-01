@@ -1,6 +1,7 @@
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Duration
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
 
@@ -66,7 +67,7 @@ fun main(args: Array<String>) {
     //AsyncCallHandler.toCompletableFuture will convert a Retrofit Call<T> to a CompleteableFuture<T> directly,
     // without allocating a thread and blocking it.
     //###############
-    val asyncHandler  = AsyncCallHandler()
+    val asyncHandler = AsyncCallHandler()
     //Pass in a retrofit API call below call.
     //This will return a future which you can then do future.thenApply etc.
 //    asyncHandler.toCompletableFuture()
@@ -96,6 +97,27 @@ class AsyncCallHandler {
         })
 
         return ret
+    }
+
+    fun <K, T> waitWithTimeout(
+        wait: Duration,
+        vararg features: Pair<K, CompletableFuture<T>>
+    ): CompletableFuture<List<Pair<K, T?>>> {
+        val result = CompletableFuture.allOf(*features.map { it.second }.toTypedArray())
+        val timeout = CompletableFuture.supplyAsync(
+            { null },
+            CompletableFuture.delayedExecutor(wait.toMillis(), TimeUnit.MILLISECONDS)
+        )
+
+        return CompletableFuture.anyOf(result, timeout).thenApply {
+            features.map { (k, v) ->
+                if (v.isDone) {
+                    k to v.join()
+                } else {
+                    k to null
+                }
+            }
+        }
     }
 }
 
